@@ -5,6 +5,7 @@ PKG_VERSION:=1
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
+PKG_BUILD_DEPENDS := respondd
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -24,6 +25,10 @@ define Package/gluon-status-page-api/install
 	$(INSTALL_DIR) $(1)/lib/gluon/status-page/providers
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/neighbours-batadv $(1)/lib/gluon/status-page/providers/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/stations $(1)/lib/gluon/status-page/providers/
+
+	$(INSTALL_DIR) $(1)/lib/gluon/announce
+	$(CP) $(PKG_BUILD_DIR)/announce.so $(1)/lib/gluon/announce/status-page-api.so
+
 	$(CP) ./files/* $(1)/
 endef
 

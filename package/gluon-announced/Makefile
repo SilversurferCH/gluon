@@ -12,7 +12,7 @@ define Package/gluon-announced
   SECTION:=gluon
   CATEGORY:=Gluon
   TITLE:=Provides node information to the network
-  DEPENDS:=+gluon-announce +respondd +lua-deflate
+  DEPENDS:=+gluon-announce +respondd
 endef
 
 define Build/Prepare
